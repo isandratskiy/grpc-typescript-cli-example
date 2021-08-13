@@ -5,14 +5,9 @@ import { HelloReply } from '../out/HelloReply'
 
 const host = '0.0.0.0:9090'
 const packageDefinition = protoLoader.loadSync('./src/proto/greetings.proto')
-const proto = grpc.loadPackageDefinition(
-  packageDefinition
-) as unknown as ProtoGrpcType
+const proto = grpc.loadPackageDefinition(packageDefinition) as unknown as ProtoGrpcType
 
-const client = new proto.GreetingsService(
-  host,
-  grpc.credentials.createInsecure()
-)
+const client = new proto.GreetingsService(host, grpc.credentials.createInsecure())
 
 const deadline = new Date()
 deadline.setSeconds(deadline.getSeconds() + 5)
@@ -46,7 +41,7 @@ function doUnaryCall() {
       if (error) {
         console.error(error.message)
       } else if (serverMessage) {
-        console.log(`(client) Got server message: ${serverMessage.message}`)
+        console.log(`[client] Greetings from ${serverMessage.message}`)
       }
     }
   )
@@ -57,6 +52,6 @@ function doServerStreamingCall() {
     name: 'Yo Garry',
   })
   stream.on('data', (serverMessage: HelloReply) => {
-    console.log(`(client) Got server message: ${serverMessage.message}`)
+    console.log(`[client] Got server message: ${serverMessage.message}`)
   })
 }
