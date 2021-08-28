@@ -8,7 +8,7 @@
     "build:proto": "proto-loader-gen-types --longs=String --enums=String --defaults --oneofs --grpcLib=@grpc/grpc-js --outDir=out/ src/proto/*.proto",
     "clean:typescript": "tsc --build --clean && rm -rf ./out",
     "prebuild": "yarn build:proto",
-    "start:server": "node src/server",
+    "start:server": "node src/server &",
     "start:client": "node src/client",
     "prettier": "prettier --write . '!**/*.js'"
   },
