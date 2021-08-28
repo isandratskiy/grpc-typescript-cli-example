@@ -23,4 +23,4 @@ jobs:
         run: yarn start:server
 
       - name: UnaryCall
-        run: start:client --unary
+        run: yarn start:client --unary
