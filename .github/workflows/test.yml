@@ -22,5 +22,8 @@ jobs:
       - name: Start gRPC
         run: yarn start:server
 
-      - name: UnaryCall
+      - name: Test CLI unary call
         run: yarn start:client --unary
+
+      - name: Test async unary call
+        run: yarn jest

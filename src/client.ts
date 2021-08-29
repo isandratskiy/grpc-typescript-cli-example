@@ -11,6 +11,7 @@ const client = new proto.GreetingsService(host, grpc.credentials.createInsecure(
 
 const deadline = new Date()
 deadline.setSeconds(deadline.getSeconds() + 5)
+
 client.waitForReady(deadline, (error?: Error) => {
   if (error) {
     console.log(`Client connect error: ${error.message}`)
